@@ -8,10 +8,10 @@ import { v2 as cloudinary } from "cloudinary";
 import cors from "cors";
 
 dotenv.config();
-app.use(cors());
 
 connectDB();
 const app = express();
+app.use(cors());
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
