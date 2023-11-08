@@ -10,7 +10,7 @@ import cors from "cors";
 dotenv.config();
 
 const allowedOrigins = [
-  "https://your-frontend-domain.com",
+  "https://threads-clone-frontend-ktfm.onrender.com",
   "http://localhost:3000",
 ]; // Add the origins that are allowed to access your backend.
 
