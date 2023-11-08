@@ -9,13 +9,27 @@ import cors from "cors";
 
 dotenv.config();
 
+const allowedOrigins = [
+  "https://your-frontend-domain.com",
+  "http://localhost:3000",
+]; // Add the origins that are allowed to access your backend.
+
 const corsOptions = {
-  origin: "https://threads-clone-frontend-ktfm.onrender.com", // frontend URI (ReactJS)
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 
 connectDB();
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
