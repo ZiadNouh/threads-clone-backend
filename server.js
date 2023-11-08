@@ -9,6 +9,10 @@ import cors from "cors";
 
 dotenv.config();
 
+const corsOptions = {
+  origin: "https://threads-clone-frontend-ktfm.onrender.com", // frontend URI (ReactJS)
+};
+
 connectDB();
 const app = express();
 app.use(cors());
