@@ -30,7 +30,12 @@ dotenv.config();
 connectDB();
 const app = express();
 // app.use(cors(corsOptions));
-app.use(cors({ origin: "https://threads-clone-frontend-ktfm.onrender.com" }));
+app.use(
+  cors({
+    origin: "https://threads-clone-frontend-ktfm.onrender.com",
+    credentials: true,
+  })
+);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
