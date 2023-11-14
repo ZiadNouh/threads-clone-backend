@@ -9,27 +9,29 @@ import cors from "cors";
 
 dotenv.config();
 
-const allowedOrigins = [
-  "https://threads-clone-frontend-ktfm.onrender.com",
-  "http://localhost:3000",
-]; // Add the origins that are allowed to access your backend.
+// const allowedOrigins = [
+//   "https://threads-clone-frontend-ktfm.onrender.com",
+//   "http://localhost:3000",
+// ]; // Add the origins that are allowed to access your backend.
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+// };
 
 connectDB();
 const app = express();
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors({ origin: "https://threads-clone-frontend-ktfm.onrender.com" }));
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
